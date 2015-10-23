@@ -3,18 +3,18 @@ title MTK Xposed Installer by darxmorph
 echo Welcome to Xposed Installer
 echo.
 :yesno
->%temp%\xposed-leagoo\yesno.vbs echo wscript.echo msgbox("Are you sure you want to install Xposed Framework on your device?","68","MTK Xposed Installer by Henry")
-for /f "delims=" %%N in ('cscript //nologo %temp%\xposed-leagoo\yesno.vbs') do set yesno=%%N & del %temp%\xposed-leagoo\yesno.vbs
+>%temp%\yesno.vbs echo wscript.echo msgbox("Are you sure you want to install Xposed Framework on your device?","68","MTK Xposed Installer by Henry")
+for /f "delims=" %%N in ('cscript //nologo %temp%\yesno.vbs') do set yesno=%%N & del %temp%\yesno.vbs
 if %yesno%==7 goto exit
 if %yesno%==6 goto continue
 goto yesno
 :continue
->%temp%\xposed-leagoo\info.vbs echo MsgBox "Before continuing, please make sure USB debugging is enabled" ^& vbCrLf ^& vbCrLf ^& _
->>%temp%\xposed-leagoo\info.vbs echo               "To enable Developer Options go to Settings > About phone > Tap 7 times on Build number" ^& vbCrLf ^& vbCrLf ^& _
->>%temp%\xposed-leagoo\info.vbs echo               "Then go to Settings > Developer Options > Enable the switch and check USB debugging" ^& vbCrLf ^& vbCrLf ^& _
->>%temp%\xposed-leagoo\info.vbs echo               "Then, connect your device to the computer" ^& vbCrLf ^& vbCrLf ^& _
->>%temp%\xposed-leagoo\info.vbs echo               "Your phone may ask if you want to allow USB debugging from this computer","64","MTK Xposed Installer by Henry"
-call %temp%\xposed-leagoo\info.vbs & del /f /q %temp%\xposed-leagoo\info.vbs
+>%temp%\info.vbs echo MsgBox "Before continuing, please make sure USB debugging is enabled" ^& vbCrLf ^& vbCrLf ^& _
+>>%temp%\info.vbs echo               "To enable Developer Options go to Settings > About phone > Tap 7 times on Build number" ^& vbCrLf ^& vbCrLf ^& _
+>>%temp%\info.vbs echo               "Then go to Settings > Developer Options > Enable the switch and check USB debugging" ^& vbCrLf ^& vbCrLf ^& _
+>>%temp%\info.vbs echo               "Then, connect your device to the computer" ^& vbCrLf ^& vbCrLf ^& _
+>>%temp%\info.vbs echo               "Your phone may ask if you want to allow USB debugging from this computer","64","MTK Xposed Installer by Henry"
+call %temp%\info.vbs & del /f /q %temp%\info.vbs
 ping 1.1.1.1 -n 1 -w 1000 >nul
 echo Waiting device detection...
 adb wait-for-device
@@ -24,10 +24,10 @@ echo.
 adb shell setprop ro.secure 0
 :checkuid0
 adb shell am start -n com.android.settings/.DevelopmentSettings
->%temp%\xposed-leagoo\info.vbs echo MsgBox "Now disable USB debugging" ^& vbCrLf ^& _
->>%temp%\xposed-leagoo\info.vbs echo               "Wait 2 seconds and turn it back on" ^& vbCrLf ^& vbCrLf ^& _
->>%temp%\xposed-leagoo\info.vbs echo               "Your phone may ask if you want to allow USB debugging from this computer","64","MTK Xposed Installer by Henry"
-call %temp%\xposed-leagoo\info.vbs & del /f /q %temp%\xposed-leagoo\info.vbs
+>%temp%\info.vbs echo MsgBox "Now disable USB debugging" ^& vbCrLf ^& _
+>>%temp%\info.vbs echo               "Wait 2 seconds and turn it back on" ^& vbCrLf ^& vbCrLf ^& _
+>>%temp%\info.vbs echo               "Your phone may ask if you want to allow USB debugging from this computer","64","MTK Xposed Installer by Henry"
+call %temp%\info.vbs & del /f /q %temp%\info.vbs
 echo.
 ping 1.1.1.1 -n 1 -w 1000 >nul
 echo Waiting device detection...
@@ -90,10 +90,10 @@ echo.
 adb shell setprop ro.secure 1
 :checkuid2000
 adb shell am start -n com.android.settings/.DevelopmentSettings
->%temp%\xposed-leagoo\info.vbs echo MsgBox "Now disable USB debugging" ^& vbCrLf ^& _
->>%temp%\xposed-leagoo\info.vbs echo               "Wait 2 seconds and turn it back on" ^& vbCrLf ^& vbCrLf ^& _
->>%temp%\xposed-leagoo\info.vbs echo               "Your phone may ask if you want to allow USB debugging from this computer","64","MTK Xposed Installer by Henry"
-call %temp%\xposed-leagoo\info.vbs & del /f /q %temp%\xposed-leagoo\info.vbs
+>%temp%\info.vbs echo MsgBox "Now disable USB debugging" ^& vbCrLf ^& _
+>>%temp%\info.vbs echo               "Wait 2 seconds and turn it back on" ^& vbCrLf ^& vbCrLf ^& _
+>>%temp%\info.vbs echo               "Your phone may ask if you want to allow USB debugging from this computer","64","MTK Xposed Installer by Henry"
+call %temp%\info.vbs & del /f /q %temp%\info.vbs
 echo.
 ping 1.1.1.1 -n 1 -w 1000 >nul
 echo Waiting device detection...
@@ -103,8 +103,8 @@ if %uid%==2000 goto askgravity
 echo.
 goto checkuid2000
 :askgravity
->%temp%\xposed-leagoo\yesno.vbs echo wscript.echo msgbox("Do you want to install GravityBox module?","68","MTK Xposed Installer by Henry")
-for /f "delims=" %%N in ('cscript //nologo %temp%\xposed-leagoo\yesno.vbs') do set yesno=%%N & del %temp%\xposed-leagoo\yesno.vbs
+>%temp%\yesno.vbs echo wscript.echo msgbox("Do you want to install GravityBox module?","68","MTK Xposed Installer by Henry")
+for /f "delims=" %%N in ('cscript //nologo %temp%\yesno.vbs') do set yesno=%%N & del %temp%\yesno.vbs
 if %yesno%==7 goto reboot
 if %yesno%==6 goto installgravitybox
 goto askgravity
@@ -120,8 +120,8 @@ echo Rebooting...
 adb reboot
 echo Killing ADB server...
 adb kill-server
->%temp%\xposed-leagoo\info.vbs echo MsgBox "Done! Don't forget to disable USB debugging...","64","MTK Xposed Installer by Henry"
-call %temp%\xposed-leagoo\info.vbs & del /f /q %temp%\xposed-leagoo\info.vbs
+>%temp%\info.vbs echo MsgBox "Done! Don't forget to disable USB debugging...","64","MTK Xposed Installer by Henry"
+call %temp%\info.vbs & del /f /q %temp%\info.vbs
 :exit
 rem Required for SFX
 rem start cmd /c "title MTK Xposed Installer by Henry & echo Deleting temp files... & cd .. & ping 1.1.1.1 -n 1 -w 1000 >nul & rmdir %~dp0 /s /q"
